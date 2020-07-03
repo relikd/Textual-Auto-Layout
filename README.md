@@ -6,7 +6,7 @@
 
 Textual Auto Layout (TAL) helps you create Auto Layout constraints that you can read, understand, and maintain.
 
-In contrast to existing libraries ([SnapKit](https://github.com/SnapKit/SnapKit), [Cartography](https://github.com/robb/Cartography)), TAL follows a minimization approach. The package consists of a single ~120 lines source file, thus TAL won't have every imaginable feature. Instead you get a dependency ideal for security audits: short and tidy.
+In contrast to existing libraries ([SnapKit](https://github.com/SnapKit/SnapKit), [Cartography](https://github.com/robb/Cartography)), TAL follows a minimization approach. The package consists of a single ~150 lines source file, thus TAL won't have every imaginable feature. Instead you get a dependency ideal for security audits: short and tidy.
 
 To install, use Swift Package Manager or simply copy the source file to your project and you're good to go.
 

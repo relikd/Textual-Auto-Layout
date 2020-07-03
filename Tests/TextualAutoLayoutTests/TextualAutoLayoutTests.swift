@@ -73,4 +73,15 @@ final class TextualAutoLayoutTests: XCTestCase {
 		x.setActive(false)
 		for u in x { XCTAssertEqual(u.isActive, false) }
 	}
+	
+	#if !os(macOS)
+	@available(iOS 11, tvOS 11, *)
+	func testSystemSpacing() {
+		let x = B.topAnchor.systemSpacing(A.bottomAnchor, multiplier: 2) | .defaultLow
+		XCTAssertEqual(x.relation, NSLayoutConstraint.Relation.equal)
+		XCTAssertEqual(x.priority, ConstraintPriority.defaultLow)
+		XCTAssertEqual(x.constant, 16)
+		XCTAssertEqual(x.multiplier, 1)
+	}
+	#endif
 }
