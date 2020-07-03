@@ -122,3 +122,27 @@ public extension Array where Element: NSLayoutConstraint {
 		return self
 	}
 }
+
+// I couldn't find a better way to handle it, but these methods are particularly useful.
+// Sadly, the syntax isn't quite as readable as the stuff above.
+
+#if !os(macOS)
+@available(iOS 11, tvOS 11, *)
+public extension NSLayoutXAxisAnchor {
+	/// Calls and activates `.constraint(equalToSystemSpacingAfter: a)`
+	@discardableResult func systemSpacing(_ equal: NSLayoutXAxisAnchor, multiplier m: CGFloat = 1.0) -> NSLayoutConstraint { constraint(equalToSystemSpacingAfter: equal, multiplier: m).on() }
+	/// Calls and activates `.constraint(lessThanOrEqualToSystemSpacingAfter: a)`
+	@discardableResult func systemSpacing(lessThan a: NSLayoutXAxisAnchor, multiplier m: CGFloat = 1.0) -> NSLayoutConstraint { constraint(lessThanOrEqualToSystemSpacingAfter: a, multiplier: m).on() }
+	/// Calls and activates `.constraint(greaterThanOrEqualToSystemSpacingAfter: a)`
+	@discardableResult func systemSpacing(greaterThan a: NSLayoutXAxisAnchor, multiplier m: CGFloat = 1.0) -> NSLayoutConstraint { constraint(greaterThanOrEqualToSystemSpacingAfter: a, multiplier: m).on() }
+}
+@available(iOS 11, tvOS 11, *)
+public extension NSLayoutYAxisAnchor {
+	/// Calls and activates `.constraint(equalToSystemSpacingBelow: a)`
+	@discardableResult func systemSpacing(_ equal: NSLayoutYAxisAnchor, multiplier m: CGFloat = 1.0) -> NSLayoutConstraint { constraint(equalToSystemSpacingBelow: equal, multiplier: m).on() }
+	/// Calls and activates `.constraint(lessThanOrEqualToSystemSpacingBelow: a)`
+	@discardableResult func systemSpacing(lessThan a: NSLayoutYAxisAnchor, multiplier m: CGFloat = 1.0) -> NSLayoutConstraint { constraint(lessThanOrEqualToSystemSpacingBelow: a, multiplier: m).on() }
+	/// Calls and activates `.constraint(greaterThanOrEqualToSystemSpacingBelow: a)`
+	@discardableResult func systemSpacing(greaterThan a: NSLayoutYAxisAnchor, multiplier m: CGFloat = 1.0) -> NSLayoutConstraint { constraint(greaterThanOrEqualToSystemSpacingBelow: a, multiplier: m).on() }
+}
+#endif
